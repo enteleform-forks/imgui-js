@@ -5,7 +5,7 @@ export interface XYZW extends XYZ { w: number; }
 export interface RGB { r: number; g: number; b: number; }
 export interface RGBA extends RGB { a: number; }
 
-import * as Bind from "bind-imgui";
+import * as Bind from "./bind-imgui";
 export { Bind };
 
 let bind: Bind.Module;
@@ -1708,7 +1708,7 @@ export class ImDrawList
     public AddImageRounded(user_texture_id: ImTextureID | null, a: Readonly<Bind.interface_ImVec2>, b: Readonly<Bind.interface_ImVec2>, uv_a: Readonly<Bind.interface_ImVec2>, uv_b: Readonly<Bind.interface_ImVec2>, col: Bind.ImU32, rounding: number, flags: ImDrawFlags = ImDrawFlags.None): void {
         this.native.AddImageRounded(ImGuiContext.setTexture(user_texture_id), a, b, uv_a, uv_b, col, rounding, flags);
     }
-    
+
     // Stateful path API, add points then finish with PathFill() or PathStroke()
     // inline    void  PathClear()                                                 { _Path.resize(0); }
     public PathClear(): void { this.native.PathClear(); }

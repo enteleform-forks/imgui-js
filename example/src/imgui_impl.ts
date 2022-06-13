@@ -1,4 +1,4 @@
-import * as ImGui from "imgui-js";
+import * as ImGui from "../../build/imgui";
 
 let clipboard_text: string = "";
 
@@ -574,7 +574,7 @@ export function RenderDrawData(draw_data: ImGui.DrawData | null = ImGui.GetDrawD
         gl || ctx || console.log(draw_list);
         gl || ctx || console.log("VtxBuffer.length", draw_list.VtxBuffer.length);
         gl || ctx || console.log("IdxBuffer.length", draw_list.IdxBuffer.length);
-        
+
         gl && gl.bindBuffer(gl.ARRAY_BUFFER, g_VboHandle);
         gl && gl.bufferData(gl.ARRAY_BUFFER, draw_list.VtxBuffer, gl.STREAM_DRAW);
         gl && gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, g_ElementsHandle);
@@ -612,8 +612,8 @@ export function RenderDrawData(draw_data: ImGui.DrawData | null = ImGui.GetDrawD
                         ctx.beginPath();
                         ctx.rect(clip_rect.x, clip_rect.y, clip_rect.z - clip_rect.x, clip_rect.w - clip_rect.y);
                         ctx.clip();
-                        const idx = ImGui.DrawIdxSize === 4 ? 
-                            new Uint32Array(draw_list.IdxBuffer.buffer, draw_list.IdxBuffer.byteOffset + draw_cmd.IdxOffset * ImGui.DrawIdxSize) : 
+                        const idx = ImGui.DrawIdxSize === 4 ?
+                            new Uint32Array(draw_list.IdxBuffer.buffer, draw_list.IdxBuffer.byteOffset + draw_cmd.IdxOffset * ImGui.DrawIdxSize) :
                             new Uint16Array(draw_list.IdxBuffer.buffer, draw_list.IdxBuffer.byteOffset + draw_cmd.IdxOffset * ImGui.DrawIdxSize);
                         for (let i = 0; i < draw_cmd.ElemCount; i += 3) {
                             const i0: number = idx[i + 0];
@@ -660,7 +660,7 @@ export function RenderDrawData(draw_data: ImGui.DrawData | null = ImGui.GetDrawD
                                     image && ctx.drawImage(image,
                                         minmin.uv[0] * width, minmin.uv[1] * height,
                                         (maxmax.uv[0] - minmin.uv[0]) * width, (maxmax.uv[1] - minmin.uv[1]) * height,
-                                        minmin.pos[0], minmin.pos[1], 
+                                        minmin.pos[0], minmin.pos[1],
                                         maxmax.pos[0] - minmin.pos[0], maxmax.pos[1] - minmin.pos[1]);
                                     // ctx.beginPath();
                                     // ctx.rect(minmin.pos[0], minmin.pos[1], maxmax.pos[0] - minmin.pos[0], maxmax.pos[1] - minmin.pos[1]);

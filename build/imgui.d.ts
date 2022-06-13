@@ -16,7 +16,7 @@ export interface RGB {
 export interface RGBA extends RGB {
     a: number;
 }
-import * as Bind from "bind-imgui";
+import * as Bind from "./bind-imgui";
 export { Bind };
 declare let bind: Bind.Module;
 export default function (value?: Partial<Bind.Module>): Promise<void>;

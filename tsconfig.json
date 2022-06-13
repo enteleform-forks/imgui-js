@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES2016",
-    "module": "system",
+    "target": "ESNext",
+    "module": "ESNext",
     "strict": true,
     "outDir": "build",
     "sourceMap": true,
